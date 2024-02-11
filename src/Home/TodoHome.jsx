@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 
 const TodoHome = () => {
+    const [filter, setFilter] = useState('all');
     const [tasks, setTasks] = useState(() => {
 
         // setting up in local storage
@@ -19,6 +20,8 @@ const TodoHome = () => {
         setTasks(prevTasks => [...prevTasks, newTask]);
     };
 
+    const filteredTasks = filter === 'all' ? tasks : tasks.filter(task => task.priority === filter);
+
     
     return (
         <div>
@@ -30,6 +33,17 @@ const TodoHome = () => {
                 <AddTask onAddTask={handleAddTask} >
                 <h2>Total Tasks: {tasks.length}</h2>
                 <h2>Completed Tasks: {tasks.filter(task => task.completed).length}</h2>
+               {/* filtering by priority */}
+                <div>
+                    <label htmlFor="filter">Filter by Priority:</label>
+                    <select id="filter" value={filter} onChange={e => setFilter(e.target.value)}>
+                        <option value="all">All</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+
                 <ul>
                     {filteredTasks.map(task => (
                         <li key={task.id}>
