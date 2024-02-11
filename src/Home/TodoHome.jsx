@@ -22,7 +22,14 @@ const TodoHome = () => {
 
     const filteredTasks = filter === 'all' ? tasks : tasks.filter(task => task.priority === filter);
 
-    
+    // for marking as complete or incomplete a task
+    const handleToggleCompletion = (taskId) => {
+        setTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.id === taskId ? { ...task, completed: !task.completed } : task
+            )
+        );
+
     return (
         <div>
             <div className="flex gap-1 items center justify-center">
