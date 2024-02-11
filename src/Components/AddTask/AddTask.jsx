@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const AddTask = () => {
+const AddTask = ({onAddTask}) => {
     const [newTask, setNewTask] = useState('');
     const [priority, setPriority] = useState('low');
     // observing input for adding task 
@@ -10,8 +10,9 @@ const AddTask = () => {
 
     const handleAddTask = () => {
         if (newTask.trim() !== '') {
-            onAddTask({ id: Date.now(), text: newTask, completed: false });
+            onAddTask({ id: Date.now(), text: newTask,priority, completed: false });
             setNewTask('');
+            setPriority('low');
             
         }
 
