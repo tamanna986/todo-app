@@ -30,6 +30,15 @@ const TodoHome = () => {
             )
         );
 
+        // for editing task
+        const handleEditTask = (taskId, newText) => {
+            setTasks(prevTasks =>
+                prevTasks.map(task =>
+                    task.id === taskId ? { ...task, text: newText } : task
+                )
+            );
+    
+
     return (
         <div>
             <div className="flex gap-1 items center justify-center">
@@ -58,7 +67,7 @@ const TodoHome = () => {
                             <button onClick={() => handleToggleCompletion(task.id)}>
                                 {task.completed ? 'Mark Incomplete' : 'Mark Complete'}
                             </button>
-                            
+                            <button onClick={() => handleEditTask(task.id, prompt('Edit task:', task.text))}>Edit</button>
                             <span>Priority: {task.priority}</span>
                         </li>
                     ))}
