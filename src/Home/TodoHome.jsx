@@ -19,6 +19,7 @@ const TodoHome = () => {
         setTasks(prevTasks => [...prevTasks, newTask]);
     };
 
+    
     return (
         <div>
             <div className="flex gap-1 items center justify-center">
@@ -28,6 +29,20 @@ const TodoHome = () => {
             <div className="w-1/2 lg:w-[700px] mx-auto my-8  px-32">
                 <AddTask onAddTask={handleAddTask} >
                 <h2>Total Tasks: {tasks.length}</h2>
+                <h2>Completed Tasks: {tasks.filter(task => task.completed).length}</h2>
+                <ul>
+                    {filteredTasks.map(task => (
+                        <li key={task.id}>
+                            <span style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>{task.text}</span>
+                            <button onClick={() => handleToggleCompletion(task.id)}>
+                                {task.completed ? 'Mark Incomplete' : 'Mark Complete'}
+                            </button>
+                            
+                            <span>Priority: {task.priority}</span>
+                        </li>
+                    ))}
+                </ul>
+
                 </AddTask>
                 <div>
                 </div>
