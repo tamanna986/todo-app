@@ -1,3 +1,4 @@
+import AddTask from "../Components/AddTask/AddTask";
 
 
 
@@ -10,7 +11,7 @@ const TodoHome = () => {
                 <h1 className="font-bold text-red-600 text-3xl">To-Do List</h1>
             </div>
             <div className="w-1/2 lg:w-[700px] mx-auto my-8  px-32">
-
+                <AddTask></AddTask>
                 <div>
                 </div>
             </div>
