@@ -1,8 +1,8 @@
-
-
 import { useEffect, useState } from "react";
 import AddTask from "../Components/AddTask/AddTask";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+AOS.init();
 const TodoHome = () => {
     const [tasks, setTasks] = useState(() => {
         const storedTasks = localStorage.getItem('tasks');
@@ -71,11 +71,11 @@ const TodoHome = () => {
                             <option value="high">High</option>
                         </select>
                     </div>
-                    <ul>
+                    <ul >
 
                         {/* showing the tasks based on the filter */}
                         {filteredTasks.map(task => (
-                            <li
+                            <li data-aos="flip-right "
                                 className="w-[150px] md:w-full p-3 border-b-4 rounded-2xl border-red-700  my-4 text-start flex flex-wrap justify-around bg-slate-800 text-white"
                                 key={task.id}>
                                 <span
