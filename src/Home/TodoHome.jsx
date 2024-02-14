@@ -75,7 +75,7 @@ const TodoHome = () => {
 
                         {/* showing the tasks based on the filter */}
                         {filteredTasks.map(task => (
-                            <li data-aos="flip-right "
+                            <li data-aos="flip-right"
                                 className="w-[150px] md:w-full p-3 border-b-4 rounded-2xl border-red-700  my-4 text-start flex flex-wrap justify-around bg-slate-800 text-white"
                                 key={task.id}>
                                 <span
